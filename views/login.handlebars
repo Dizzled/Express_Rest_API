@@ -1,0 +1,37 @@
+
+
+<i>{{error}}</i>
+
+  <title>Login</title>
+  {{!-- <link rel="stylesheet" href="#style.css"> --}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+  <div class="wrapper">
+    <header>Login Form</header>
+    <form action="/login" method="POST">
+    <div class="field name">
+        <div class="input-area">
+          <input type="text" name="name">
+          <i class="icon fas fa-user"></i>
+      <div class="field email">
+        <div class="input-area">
+          <input type="text" name="email">
+          <i class="icon fas fa-envelope"></i>
+         
+        </div>
+      </div>
+      <div class="field password">
+        <div class="input-area">
+          <input type="password" name="password">
+          <i class="icon fas fa-lock"></i>
+        </div>
+      </div>
+      <input type="submit" value="login">
+    </form>
+  </div>
+  <a href="/register" alt>Not a user signup here!!</a>
+  
+
+</body>
+</html>
