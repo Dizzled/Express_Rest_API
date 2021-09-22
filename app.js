@@ -9,7 +9,7 @@ var logger = require('morgan');
 const exphbs = require('express-handlebars');
 const handlebars = require('./util/handlebars')(exphbs);
 const db = require('./database');
-
+const fileUpload = require('express-fileupload');
 var index = require('./routes/');
 var user = require('./routes/user');
 var login = require('./routes/login');
@@ -55,8 +55,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(require('body-parser').json());
 
+app.use(fileUpload());
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
 app.use('/', index);
 app.use('/user', user);
