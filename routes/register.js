@@ -10,10 +10,7 @@ router.get('/', function (req, res, next) {
 
 });
 
-
 router.post('/', function (req, res, next) {
-
-  var reqEmail = req.body.email
 
   if (req.body.email > 0 && req.body.username > 0 && req.body.password > 0) {
 
@@ -28,8 +25,6 @@ router.post('/', function (req, res, next) {
   db.get(sql, email, (err, row) => {
     if (!row) {
 
-
-      let parameters = [req.body.username, req.body.email, md5(req.body.password)];
       var insert = 'INSERT INTO user (name, email, password) VALUES(?,?,?)';
       console.log(insert);
 
