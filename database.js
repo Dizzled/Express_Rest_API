@@ -29,6 +29,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
                     db.run(insert, ["admin", "admin@example.com", md5("admin123456")])
                     db.run(insert, ["user", "user@example.com", md5("user123456")])
                     db.run(insert, ["user", "test@test", md5("password")])
+                    
                 }
             });
     }

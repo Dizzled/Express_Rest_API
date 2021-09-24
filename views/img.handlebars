@@ -1,16 +1,13 @@
 
+<h1>{{session}}</h1>
+<i>{{error}}</i>
 
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-  <link href="/stylesheets//main.min.css" rel="stylesheet">
-  <link href="/stylesheets//justified-nav.css" rel="stylesheet">
   <title>Login</title>
   {{!-- <link rel="stylesheet" href="#style.css"> --}}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
 <body>
-<h1>{{session}}</h1>
-<i>{{error}}</i>
-  <div style="text-align: center;" class="wrapper">
+  <div class="wrapper">
     <header>Login Form</header>
     <form action="/login" method="POST">
     <div class="field name">
@@ -29,7 +26,6 @@
           <input type="password" name="password">
           <i class="icon fas fa-lock"></i>
         </div>
-      </div>
       </div>
       <input type="submit" value="login">
     </form>

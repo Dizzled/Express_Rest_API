@@ -1,7 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="{{layoutData.meta.robots}}">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link href="/stylesheets/main.min.css" rel="stylesheet">
+  <link href="/stylesheets/justified-nav.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <script src="/javascripts/script.js"></script>
+</head>
+
 
 <body>
+<h1 style="text-align: center;">Success! Welcome {{username}}</h1>
+    <nav>
+      <ul class="nav nav-justified">
+        <li class="active">
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/register">Register</a>
+        </li>
+        <li>
+          <a href="/logout">logout</a>
+        </li>
+        <li>
+          <a href="/message">Message</a>
+        </li>
+        <li>
+      <form id="searchForm" action="javascript:search();">
+      <input type="text" id="searchItem" placeholder="Search.." name="search">
+      <button id="go" class="btn btn-default" type="button" 
+              onclick="document.getElementById('searchForm').submit(); return false;">
+      <i class="fa fa-search"></i>
+      </button>
+    </form>
+      <div class="row" id="graphic_board">
+      <div class="col-md">
+      <p>My brothers and sisters all hated me because I was an only child.</p>
+      </div>
+</div>
 
-<img class="weird" src="/public/images/profile.png"></img>
-<h1>Success! Welcome {{username}}.</h1>
+    </li>
+   </div>
+</form>
+      </ul>
+    </nav>
+
+</div>
+<!-- pass in image path as variable after retreiving from database  onsubmit="document.getElementById('searchForm').submit(); return false;" -->
+<img class="leftpic"  name=http://localhost:3000/img/{{img}} src=http://localhost:3000/img/{{img}}></img> 
+
+
+<i>{{upload}}</i>
+<form class="pic" action="http://localhost:3000/profile" enctype="multipart/form-data" method="POST"> 
+   <input type="file" name="pic" />
+   <input type="submit" value="Upload a Picture"/>
+</form>
+
+
+</div> 
 
 </body>
+
