@@ -19,7 +19,7 @@ router.get('/', function (req, res, next) {
       name = row.name;
       userid = row.id
       if (row.img) {
-
+        console.log(row.img)
         res.render('profile', {
           img : userid,
           username : name
@@ -31,9 +31,7 @@ router.get('/', function (req, res, next) {
         }
     //If profile image already exists load the image
     } else {
-      res.render('profile', {
-        username: "Cannot Find Username"
-      })
+      res.render('profile');
     }
   });
 

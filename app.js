@@ -10,6 +10,7 @@ const exphbs = require('express-handlebars');
 const handlebars = require('./util/handlebars')(exphbs);
 const db = require('./database');
 const fileUpload = require('express-fileupload');
+var flash = require('express-flash');
 var index = require('./routes/');
 var user = require('./routes/user');
 var login = require('./routes/login');
@@ -17,6 +18,10 @@ var profile = require('./routes/profile');
 var register = require('./routes/register');
 var upload = require('./routes/upload');
 var img = require('./routes/img');
+var messages = require('./routes/messages');
+var logout = require('./routes/logout');
+var usermessage = require('./routes/usermessage');
+
 var app = express();
 
 // view engine setup
@@ -53,13 +58,13 @@ app.use(session({
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public/images')); 
-
 app.use(fileUpload());
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
+app.use(flash());
 app.use('/', index);
 app.use('/user', user);
 app.use('/login', login);
@@ -67,6 +72,9 @@ app.use('/profile', profile);
 app.use('/register', register);
 app.use('/upload', upload);
 app.use('/img', img);
+app.use('/messages', messages);
+app.use('/logout', logout);
+app.use('/usermessage', usermessage);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

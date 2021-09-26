@@ -1,0 +1,25 @@
+
+<head>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link href="/stylesheets/main.min.css" rel="stylesheet">
+<link href="/stylesheets/justified-nav.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+</head>
+<body>
+  <h1 style="text-align: center;">Hello {{username}} Send a Message</h1>
+<p><img class="leftpic"  src=http://localhost:3000/img/{{img}} src=http://localhost:3000/img/{{img}}></img></p>
+<div class="formColumn">
+<p><form style="text-align: center;"  action="/messages" method="POST" id="usrform">
+  Email: <input type="text" name="email" required="true">
+  Name: <input type="text" name="name" required="true">
+  <input type="submit" value="Leave Message" >
+  <div><textarea rows="4" cols="50" name="message" form="usrform"></textarea></div>
+  <i>{{info}}</i>
+</form>
+</p>
+</div>
+<div><input class="refresh" type="submit" value="refresh"/></div>
+
+</body>
+</html>

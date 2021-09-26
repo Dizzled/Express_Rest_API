@@ -1,20 +1,30 @@
+<head>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link href="/stylesheets/main.min.css" rel="stylesheet">
+<link href="/stylesheets/justified-nav.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
 
 
-<i>{{message}}</i>
 
   <title>Register</title>
 </head>
 <body>
-  <form form action="/register" method="POST">
+  
+  <div style="text-align: center;" class="wrapper">
+  <i style="text-align: center;">{{message}}</i>
+  <form action="/register" method="POST">
   <label for="name">Name:</label><br>
   <input type="text" id="name" name="name"><br>
   <label for="email">Email:</label><br>
   <input type="text" id="email" name="email">
-  <div><label for="password">password:</label><br></div>
+  <div><label for="password">password:</label></div>
   <input type="text" id="password" name="password">
-   <input type="submit" value="Submit">
-</form>
-<a href="/login">Return to Login</a> 
+   <div><input type="submit" value="Submit"></div>
+  </form>
+  <a href="/login">Return to Login</a>
+</div>
+ 
   </div>
 </body>
 </html>
