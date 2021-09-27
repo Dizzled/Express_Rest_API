@@ -3,51 +3,56 @@ const db = require('../database');
 var router = express.Router();
 var md5 = require('md5');
 
-/* GET Login page. */
+/* GET Remove page. */
 router.get('/', function (req, res, next) {
 
-  res.render('register');
+  var query = "SELECT * FROM user";
 
+  db.all(query, [], (err, row) => {
+    if (err) {
+      res.status(404).json({
+        "error": err.message
+      });
+      return;
+    }
+    if (row){
+      res.render('remove', {
+        user: row
+      });
+    }else{
+      res.end("No Message with that id!")
+    }
+  })
 });
 
 router.post('/', function (req, res, next) {
-
-  if (req.body.email > 0 && req.body.username > 0 && req.body.password > 0) {
-
-    res.render('register', {
-      message: err.message
-    });
-    return;
-  }
 
   var sql = "select * from user where email = ?";
   var email = req.body.email;
   db.get(sql, email, (err, row) => {
     if (!row) {
 
-      var insert = 'INSERT INTO user (name, email, password) VALUES(?,?,?)';
-      console.log(insert);
+      var insert = 'DELETE FROM user WHERE email = ?';
 
-      db.run(insert, [req.body.username, req.body.email, md5(req.body.password)], function (err) {
+      db.run(insert, [req.body.email], function (err) {
         if (err) {
           return console.error(err.message);
         }
-        console.log(`Rows inserted ${this.changes}`);
+        console.log(`Rows Deleted ${this.changes}`);
 
-        res.render('register', {
-          message: "Thank you for signing up!"
+        res.render('remove', {
+          info: "User Deleted!"
           
         })
       });
 
     } else {
-      res.render('register', {
-        message: "registration failed user already exists!"
+      res.render('remove', {
+        message: "No User By That name!"
 
       })
     }
   })
-
 });
 
 

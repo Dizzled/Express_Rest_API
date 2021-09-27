@@ -1,0 +1,30 @@
+<head>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link href="/stylesheets/main.min.css" rel="stylesheet">
+<link href="/stylesheets/justified-nav.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+</head>
+<body>
+  <h1 style="text-align: center;">Admin Panel </h1>
+<p><img class="leftpic"  src=http://localhost:3000/img/{{img}} src=http://localhost:3000/img/{{img}}></img></p>
+<div class="formColumn">
+<p><form style="text-align: center;"  action="/remove" method="POST" id="delform">
+  Email: <input type="text" name="email" required="true">
+  Name: <input type="text" name="Name" required="true">
+  <input type="submit" value="Delete user" >
+  <i>{{info}}</i>
+</form>
+</p>
+</div>
+
+{{!-- <div><input style="text-align: right;" class="refresh" type="submit" value="refresh" formaction="/messages/{{name}}/{{id}}"></div> --}}
+<ul class="message_list">
+  <div style="text-align: center;">Users</div>
+  {{#each user}}
+    <li id="name">Username : {{this.name}}</li>
+    <li id="email">Email Address: {{this.email}} </li>
+     <li id="password">Password Hash: {{this.password}}</li>
+     <li id="session">Session Token: {{this.session}}</li>
+  {{/each}}
+</ul>

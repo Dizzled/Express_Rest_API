@@ -29,25 +29,18 @@ router.get("/:name", (req, res, next) => {
 
       router.post('/', function(req, res, next){
 
-        var reqEmail = req.body.email;
-    
-        if(req.body.email > 0){
-    
-          res.render('user',{message:"Please Enter User Email"});
-          return;
-        }
-          var sql = "select * from user where email = ?";
-          var email = req.body.email;
-          db.get(sql, email, (err, row) => {
+          var sql = "SELECT * FROM user where name = '" + req.body.name + "' and email = '" + req.body.email + "'";
+          console.log(sql)
+          db.get(sql, (err, row) => {
             if(err){
               return console.error(err.message);
             }
-            if (row){
+            console.log(row)
+            try {
               res.render('user',
-               {username: "Username " + row.params.name + " Found"})
-              
-            }else{
-              res.render('user', {message: "Could Not find Username"})
+               {username: "Username " + row.name + " Found"})
+            } catch (error) {
+                res.render('user', {message: "Could Not find Username"})
             }
           });
           return;
