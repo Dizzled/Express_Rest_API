@@ -35,8 +35,21 @@ body {
   float: center;
 
 }
+.message_list {
+  position:inherit;
+  float: right;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 50px, 50px, 50px, 50px;
 
+}
 
+#from{
+  float: center;
+  background-color: #eee;
+  border: 1px solid #ccc;
+}
 .formColumn2 label span {
   width: 150px;
   display: inline-block;

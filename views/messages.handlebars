@@ -12,14 +12,27 @@
 <div class="formColumn">
 <p><form style="text-align: center;"  action="/messages" method="POST" id="usrform">
   Email: <input type="text" name="email" required="true">
-  Name: <input type="text" name="name" required="true">
+  Name: <input type="text" name="from" required="true">
   <input type="submit" value="Leave Message" >
   <div><textarea rows="4" cols="50" name="message" form="usrform"></textarea></div>
   <i>{{info}}</i>
 </form>
 </p>
 </div>
-<div><input class="refresh" type="submit" value="refresh"/></div>
+
+{{!-- <div><input style="text-align: right;" class="refresh" type="submit" value="refresh" formaction="/messages/{{name}}/{{id}}"></div> --}}
+<ul class="message_list">
+  <div style="text-align: center;">MESSAGES</div>
+  {{#each message}}
+    <li id="from">From: {{this.name}} </li>
+     <li id="to">Message: {{this.message}}</li>
+  {{/each}}
+</ul>
+{{!-- <ul class="message_list">
+  <a href="http://localhost:3000/messages/{{#each people}}"></a>
+    <li>{{message}}</li>
+  {{/each}} --}}
+</ul>
 
 </body>
 </html>
