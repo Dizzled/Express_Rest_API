@@ -1,4 +1,3 @@
-
 var express = require('express');
 var router = express.Router();
 var user = require('./handler');
@@ -36,6 +35,9 @@ router.get('/login', user.loginGET)
 
 /* POST Login Page */
 router.post('/login', user.loginPOST)
+
+/* GET img Page */
+router.get('/img', user.img)
 
 
 module.exports = router;

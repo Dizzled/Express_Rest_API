@@ -9,6 +9,27 @@ const {
 
 
 module.exports = {
+
+  img: function(req, res){
+    id = req.params.id
+    console.log(id)
+    var sql = "select img from user where id = ?"
+  
+    db.get(sql, [id], (err, row) => {
+      if (err) {
+        res.status(404).json({
+          "error": err.message
+        });
+        return;
+      }
+      if (row){
+        res.end(row.img);
+      }else{
+        res.end("No Img with that id!")
+      }
+    })
+  },
+
   uploads: function (req, res) {
     result = fileCheck(req)
     res.render('upload', {
