@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>MY APP</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="{{layoutData.meta.robots}}">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link href="/stylesheets/main.min.css" rel="stylesheet">
+  <link href="/stylesheets/justified-nav.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <script src="/javascripts/script.js"></script>
 </head>
 <body>
+
 <i>{{upload}}</i>
 <form action="http://localhost:3000/upload" enctype="multipart/form-data" method="POST"> 
-   <input type="file" name="pic" />
-   <input type="submit" value="Upload a file"/>
+   <input type="file" name="pic"/>
+   <input type="submit" value="Upload"/>
 </form>
+<p>Only .jpg and .png files allowed</p>
  
 </body>
 </html>

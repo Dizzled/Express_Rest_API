@@ -1,6 +1,7 @@
 
 var express = require('express');
 var router = express.Router();
+var user = require('./handler');
 
 /* GET home page. */
 router.get(["/","/index"], function(req, res, next) {
@@ -10,5 +11,16 @@ router.get(["/","/index"], function(req, res, next) {
   res.render('index', { title: name });
 });
 
-module.exports = router;
 
+/* GET Uploads Page */
+router.get('/upload', function(req,res){
+  
+    return res.render('upload')
+
+});
+
+/* POST Uploads Page */
+router.post('/upload', user.uploads);
+
+
+module.exports = router;

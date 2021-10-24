@@ -2,8 +2,7 @@ var express = require('express');
 var router = express.Router();
 const db = require('../database');
 var md5 = require('md5');
-let stringify = require('json-stringify-safe')
-
+const { setProfileCookie } = require('../util/helper');
 /* GET Login page. */
 router.get('/', function (req, res, next) {
 
@@ -21,13 +20,13 @@ router.post('/', function (req, res, next) {
     res.redirect('/profile')
     return;
   }
-
+  
   let email = req.body.email;
   let pass = md5(req.body.password);
 
   var query = "SELECT * FROM user where email = '" + email + "' and password = '" + pass + "'";
 
-  console.log(query);
+  // console.log(query);
   db.get(query, function (err, row) {
     if (err) {
       res.render('login', {
@@ -44,6 +43,7 @@ router.post('/', function (req, res, next) {
 
           req.session.userId = row.id;
           req.session.save(() => {
+          setProfileCookie(req, res)
           res.redirect('/profile');
           })
         })

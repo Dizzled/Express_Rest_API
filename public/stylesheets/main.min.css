@@ -1,1 +1,10 @@
-body{padding-top:20px}
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: darkgray;
+  }
+
+  
+input[type=file]{ 
+  color:transparent;
+}
