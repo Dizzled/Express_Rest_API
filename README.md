@@ -16,3 +16,4 @@ XSS - Search Bar
 MFLAC - Remove Page
 CSRF - Delete User
 FileUpload - Profile & Upload
+Deserialization
