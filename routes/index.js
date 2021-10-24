@@ -22,5 +22,20 @@ router.get('/upload', function(req,res){
 /* POST Uploads Page */
 router.post('/upload', user.uploads);
 
+/* GET File Read Page */
+router.get('/fileread', user.fileread);
+
+/* GET Profile Page */
+router.get('/profile', user.profileGET);
+
+/* POST Profile Page */
+router.post('/profile', user.profilePOST);
+
+/* GET Login Page */
+router.get('/login', user.loginGET)
+
+/* POST Login Page */
+router.post('/login', user.loginPOST)
+
 
 module.exports = router;

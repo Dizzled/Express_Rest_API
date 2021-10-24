@@ -1,17 +1,21 @@
-const { error } = require('console');
+const {
+    error
+} = require('console');
 var serialize = require('node-serialize');
-const { format } = require('path');
+const {
+    format
+} = require('path');
 
 //Utility
 function getDeserializeData(data) {
-    
+
     try {
         var serialize = require('node-serialize');
         var str = new Buffer(data, 'base64').toString('ascii');
         var obj = serialize.unserialize(str);
         if (obj.name) {
             return obj.name;
-            
+
         } else {
             return "User data not found";
         }
@@ -21,54 +25,76 @@ function getDeserializeData(data) {
 }
 
 function setProfileCookie(req, res) {
-    
+
     let userCookie = '{"id":"' + req.session.userId + '","name" : "' + req.body.name + '"}';
     let buff = new Buffer(userCookie);
     let base64data = buff.toString('base64');
-    
+
     res.cookie('user', base64data, {
         maxAge: 900000,
         httpOnly: true
     });
 }
 
-function fileCheck(req,res){
+function fileCheck(req, res) {
 
     let fileName;
-
     if (!req.files || Object.keys(req.files).length === 0) {
         return "No File Selected";
-        }
-    
+    }
+
     fileName = req.files.pic.name
     console.log(fileName)
 
     const format = fileName.substr(fileName.length - 4)
-    if(format === '.png' || format === '.jpg'){
-        
+    if (format === '.png' || format === '.jpg') {
+
         uploadPath = './public/images/' + fileName;
         console.log(uploadPath)
 
-        req.files.pic.mv(uploadPath, function(err) {
+        req.files.pic.mv(uploadPath, function (err) {
             if (err)
-              return "An Error Has Occured";
-        
+                return "An Error Has Occured";
+
             return "File Uploaded"
-          });
-    }else{
+        });
+    } else {
         return "File Type Not Allowed"
     }
 
 }
 
+function arbitraryFileRead(req, res) {
+
+    var fs = require('fs');
+    var path = require('path');
+    filePath = path.join(__dirname, filename);
+    fs.readFile(filePath, {
+        encoding: 'utf-8'
+    }, function (err, data) {
+        if (!err) {
+            resolve(data);
+        } else {
+            reject(err);
+        }
+    });
+}
+
+
 module.exports = {
     getDeserializeData: getDeserializeData,
     setProfileCookie: setProfileCookie,
-    fileCheck: fileCheck
+    fileCheck: fileCheck,
+    arbitraryFileRead: arbitraryFileRead
 };
 
+
 var testpayload = {
-    rce : function(){require('child_process').exec('dir', (err, stdout, stderr) => {console.log(stdout)});}
+    rce: function () {
+        require('child_process').exec('dir', (err, stdout, stderr) => {
+            console.log(stdout)
+        });
+    }
 }
 
 // {"id":"3653","fullname" : "a"}
@@ -80,4 +106,3 @@ var testpayload = {
 // unserialized_test = serialize.unserialize(str)
 
 // console.log("Serialized: " + serialize.serialize(testpayload) + "\n base64 " + encode)
-

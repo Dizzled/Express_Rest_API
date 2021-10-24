@@ -13,8 +13,6 @@ const fileUpload = require('express-fileupload');
 var flash = require('express-flash');
 var index = require('./routes/');
 var user = require('./routes/user');
-var login = require('./routes/login');
-var profile = require('./routes/profile');
 var register = require('./routes/register');
 var remove = require('./routes/remove');
 var img = require('./routes/img');
@@ -67,8 +65,6 @@ app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
 app.use(flash());
 app.use('/', index);
 app.use('/user', user);
-app.use('/login', login);
-app.use('/profile', profile);
 app.use('/remove', remove);
 app.use('/register', register);
 app.use('/img', img);
